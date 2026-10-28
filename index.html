@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyHub | Your Smart Student Companion</title>
+  <meta name="description" content="StudyHub is a modern, all-in-one student workspace featuring subject notes, previous question papers, a daily to-do list, and an interactive study timetable.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans for a modern, sleek appearance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo">
+        <div class="logo-icon">
+          <!-- Graduation Cap & Book SVG Icon -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <span class="brand-name">Study<span class="brand-highlight">Hub</span></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#notes" class="nav-link">Subject Notes</a></li>
+          <li><a href="#papers" class="nav-link">Question Papers</a></li>
+          <li><a href="#tasks" class="nav-link">Daily Tasks</a></li>
+          <li><a href="#timetable" class="nav-link">Timetable</a></li>
+          <li><a href="#focus" class="nav-link focus-link">Focus Timer</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Button & Mobile Hamburger -->
+      <div class="nav-actions">
+        <a href="#tasks" class="btn btn-primary btn-sm btn-nav-cta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          Quick Task
+        </a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+
+    <!-- SECTION 1: HERO & WELCOME -->
+    <section class="hero-section" id="home">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge-greeting" id="hero-badge">
+            <span class="pulse-dot"></span>
+            <span id="current-day-date">Loading date...</span>
+          </div>
+          <h1 class="hero-title">
+            Welcome to <span class="gradient-text">StudyHub</span>,<br>
+            Your Ultimate Study Space
+          </h1>
+          <p class="hero-subtitle">
+            Stay organized, master your subjects, track daily goals, and ace exams with curated notes, past papers, and your customized study schedule.
+          </p>
+          
+          <!-- Motivational Quote Box -->
+          <div class="quote-card">
+            <div class="quote-icon">💡</div>
+            <div>
+              <p class="quote-text" id="quote-text">"Small daily improvements over time lead to stunning results."</p>
+              <span class="quote-author" id="quote-author">— Robin Sharma</span>
+            </div>
+          </div>
+
+          <!-- Hero Buttons -->
+          <div class="hero-actions">
+            <a href="#notes" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Explore Notes
+            </a>
+            <a href="#tasks" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              My Tasks
+            </a>
+            <a href="#timetable" class="btn btn-ghost">
+              View Schedule
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Stats Overview Cards -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon-wrapper bg-blue-subtle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-number" id="stat-notes-count">12+</h3>
+              <p class="stat-label">Subject Notes</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper bg-cyan-subtle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-number" id="stat-papers-count">16+</h3>
+              <p class="stat-label">Past Papers</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper bg-emerald-subtle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-number" id="stat-tasks-pending">3</h3>
+              <p class="stat-label">Pending Tasks</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper bg-indigo-subtle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-number" id="stat-today-classes">4</h3>
+              <p class="stat-label">Today's Sessions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SUBJECT NOTES -->
+    <section class="section notes-section" id="notes">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Study Materials</span>
+            <h2 class="section-title">Subject Notes & Summaries</h2>
+            <p class="section-desc">Handcrafted high-yield summaries, key formulas, and lecture notes for quick review.</p>
+          </div>
+          <div class="section-action-btn">
+            <button class="btn btn-primary btn-sm" id="btn-add-note-modal">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+              Add Your Note
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="controls-toolbar">
+          <div class="filter-pills" id="notes-filter-pills">
+            <button class="pill active" data-filter="all">All Subjects</button>
+            <button class="pill" data-filter="Computer Science">Computer Science</button>
+            <button class="pill" data-filter="Mathematics">Mathematics</button>
+            <button class="pill" data-filter="Physics">Physics</button>
+            <button class="pill" data-filter="Chemistry">Chemistry</button>
+            <button class="pill" data-filter="English">English</button>
+          </div>
+
+          <div class="search-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="notes-search-input" placeholder="Search notes by topic or keyword...">
+          </div>
+        </div>
+
+        <!-- Notes Cards Grid -->
+        <div class="notes-grid" id="notes-grid">
+          <!-- Dynamically populated via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PREVIOUS QUESTION PAPERS -->
+    <section class="section papers-section" id="papers">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Exam Preparation</span>
+            <h2 class="section-title">Previous Question Papers</h2>
+            <p class="section-desc">Practice with real semester exams and board papers with answer hints and marking schemes.</p>
+          </div>
+        </div>
+
+        <!-- Controls: Subject & Year Filters + Search -->
+        <div class="controls-toolbar papers-toolbar">
+          <div class="select-group">
+            <div class="custom-select-wrapper">
+              <label for="paper-subject-filter" class="control-label">Subject</label>
+              <select id="paper-subject-filter" class="form-select">
+                <option value="all">All Subjects</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+              </select>
+            </div>
+
+            <div class="custom-select-wrapper">
+              <label for="paper-year-filter" class="control-label">Year</label>
+              <select id="paper-year-filter" class="form-select">
+                <option value="all">All Years</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="search-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="paper-search-input" placeholder="Search question papers...">
+          </div>
+        </div>
+
+        <!-- Papers Cards Grid -->
+        <div class="papers-grid" id="papers-grid">
+          <!-- Dynamically populated via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: TO-DO LIST (DAILY STUDY TASKS) -->
+    <section class="section tasks-section" id="tasks">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Daily Productivity</span>
+            <h2 class="section-title">Daily Study Tasks</h2>
+            <p class="section-desc">Organize your daily study goals, track your progress, and build steady habits.</p>
+          </div>
+        </div>
+
+        <div class="tasks-container">
+          <!-- Left/Top: Add Task Card -->
+          <div class="task-form-card">
+            <h3 class="card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              Add New Study Task
+            </h3>
+            
+            <form id="add-task-form" class="task-form">
+              <div class="form-group">
+                <label for="task-title-input">Task Description</label>
+                <input type="text" id="task-title-input" class="form-input" placeholder="e.g., Practice 10 Calculus problems" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="task-subject-input">Subject / Category</label>
+                  <select id="task-subject-input" class="form-select">
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="English">English</option>
+                    <option value="General Revision">General Revision</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="task-priority-input">Priority</label>
+                  <select id="task-priority-input" class="form-select">
+                    <option value="High">🔥 High</option>
+                    <option value="Medium" selected>⚡ Medium</option>
+                    <option value="Low">🌱 Low</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="task-due-date">Due Time / Target</label>
+                <input type="text" id="task-due-date" class="form-input" placeholder="e.g., Today before 6:00 PM">
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                Add Task to List
+              </button>
+            </form>
+          </div>
+
+          <!-- Right/Bottom: Tasks List & Progress View -->
+          <div class="task-list-card">
+            <!-- Progress Tracker -->
+            <div class="task-progress-box">
+              <div class="progress-info">
+                <span class="progress-label">Today's Completion Rate</span>
+                <span class="progress-percent" id="task-completion-percent">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="task-progress-bar" style="width: 0%;"></div>
+              </div>
+              <p class="progress-encouragement" id="task-encouragement">Add your first task to get started!</p>
+            </div>
+
+            <!-- Task Controls -->
+            <div class="task-toolbar">
+              <div class="task-filter-pills" id="task-filter-pills">
+                <button class="sub-pill active" data-task-filter="all">All (<span id="count-all">0</span>)</button>
+                <button class="sub-pill" data-task-filter="pending">Active (<span id="count-pending">0</span>)</button>
+                <button class="sub-pill" data-task-filter="completed">Done (<span id="count-done">0</span>)</button>
+              </div>
+              <button class="btn-text-danger" id="btn-clear-completed" title="Clear all finished tasks">
+                Clear Completed
+              </button>
+            </div>
+
+            <!-- Tasks Scrollable List -->
+            <ul class="task-list" id="task-list-items">
+              <!-- Dynamically populated via app.js -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: STUDY TIMETABLE -->
+    <section class="section timetable-section" id="timetable">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Weekly Schedule</span>
+            <h2 class="section-title">Interactive Study Timetable</h2>
+            <p class="section-desc">Plan your lectures, revision blocks, and study routines day by day.</p>
+          </div>
+          <div class="section-action-btn">
+            <button class="btn btn-primary btn-sm" id="btn-add-slot-modal">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+              Add Schedule Slot
+            </button>
+          </div>
+        </div>
+
+        <!-- Day Selector Tabs -->
+        <div class="day-tabs-wrapper">
+          <div class="day-tabs" id="day-tabs">
+            <button class="day-tab" data-day="Monday">Monday</button>
+            <button class="day-tab" data-day="Tuesday">Tuesday</button>
+            <button class="day-tab" data-day="Wednesday">Wednesday</button>
+            <button class="day-tab" data-day="Thursday">Thursday</button>
+            <button class="day-tab" data-day="Friday">Friday</button>
+            <button class="day-tab" data-day="Saturday">Saturday</button>
+            <button class="day-tab" data-day="Sunday">Sunday</button>
+          </div>
+        </div>
+
+        <!-- Schedule Grid for selected day -->
+        <div class="schedule-display">
+          <div class="schedule-day-banner">
+            <h3 class="schedule-current-day" id="schedule-active-day-title">Monday Schedule</h3>
+            <span class="schedule-slot-count" id="schedule-active-count">4 sessions planned</span>
+          </div>
+
+          <div class="schedule-grid" id="schedule-grid">
+            <!-- Dynamically populated via app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: POMODORO FOCUS TIMER (BONUS PRODUCTIVITY TOOL) -->
+    <section class="section focus-section" id="focus">
+      <div class="container">
+        <div class="focus-card">
+          <div class="focus-header">
+            <span class="section-badge">Productivity Booster</span>
+            <h2 class="focus-title">Study Focus Timer</h2>
+            <p class="focus-subtitle">Use the Pomodoro technique: 25 minutes of laser-focused study followed by a 5-minute break.</p>
+          </div>
+
+          <!-- Timer Mode Switcher -->
+          <div class="timer-mode-buttons">
+            <button class="timer-mode-btn active" data-time="1500" data-mode="Study Focus">Pomodoro (25m)</button>
+            <button class="timer-mode-btn" data-time="300" data-mode="Short Break">Short Break (5m)</button>
+            <button class="timer-mode-btn" data-time="900" data-mode="Long Break">Long Break (15m)</button>
+          </div>
+
+          <!-- Giant Timer Display -->
+          <div class="timer-display-box">
+            <span class="timer-digits" id="timer-display">25:00</span>
+            <span class="timer-status" id="timer-status-text">Ready to study</span>
+          </div>
+
+          <!-- Timer Controls -->
+          <div class="timer-controls">
+            <button class="btn btn-primary btn-lg" id="btn-timer-start">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Start Session
+            </button>
+            <button class="btn btn-secondary btn-lg" id="btn-timer-pause" disabled>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              Pause
+            </button>
+            <button class="btn btn-ghost btn-lg" id="btn-timer-reset">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <div class="logo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <span class="brand-name">Study<span class="brand-highlight">Hub</span></span>
+        </div>
+        <p class="footer-desc">
+          A modern, clean, and distraction-free study platform designed for high school, college, and university students.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#notes">Subject Notes</a></li>
+          <li><a href="#papers">Question Papers</a></li>
+          <li><a href="#tasks">Daily Study Tasks</a></li>
+          <li><a href="#timetable">Timetable</a></li>
+          <li><a href="#focus">Focus Timer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Study Resources</h4>
+        <ul class="footer-links">
+          <li><a href="#notes">Computer Science Notes</a></li>
+          <li><a href="#notes">Mathematics Formulae</a></li>
+          <li><a href="#papers">2024 Exam Question Papers</a></li>
+          <li><a href="#papers">Practice Sets & Solutions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Study Smart</h4>
+        <p class="footer-tip">
+          "Consistency beats intensity. Review your notes for 20 minutes every evening to retain 80% more information."
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>© 2026 StudyHub. Built with 💙 for students everywhere.</p>
+        <p class="footer-tagline">Clean. Simple. Organized.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- Modal 1: Read Note Details -->
+  <div class="modal-backdrop" id="modal-view-note">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <div>
+          <span class="badge" id="modal-note-subject">Subject</span>
+          <h3 class="modal-title" id="modal-note-title">Note Title</h3>
+        </div>
+        <button class="modal-close" data-close-modal="modal-view-note">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-note-body">
+        <!-- Content inserted dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" onclick="window.print()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print / Save PDF
+        </button>
+        <button class="btn btn-primary btn-sm" data-close-modal="modal-view-note">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Add New Note -->
+  <div class="modal-backdrop" id="modal-add-note">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Create New Note</h3>
+        <button class="modal-close" data-close-modal="modal-add-note">&times;</button>
+      </div>
+      <form id="form-create-note">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="new-note-title">Title</label>
+            <input type="text" id="new-note-title" class="form-input" placeholder="e.g., Photosynthesis & Cellular Respiration" required>
+          </div>
+          <div class="form-group">
+            <label for="new-note-subject">Subject</label>
+            <select id="new-note-subject" class="form-select">
+              <option value="Computer Science">Computer Science</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Physics">Physics</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="English">English</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="new-note-summary">Short Summary</label>
+            <input type="text" id="new-note-summary" class="form-input" placeholder="Brief 1-sentence overview" required>
+          </div>
+          <div class="form-group">
+            <label for="new-note-content">Full Note Content (supports paragraphs and bullet points)</label>
+            <textarea id="new-note-content" class="form-textarea" rows="6" placeholder="Write or paste your lecture notes, formula lists, key definitions here..." required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost btn-sm" data-close-modal="modal-add-note">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: View Question Paper Preview -->
+  <div class="modal-backdrop" id="modal-view-paper">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <div>
+          <span class="badge" id="modal-paper-badge">Exam Paper</span>
+          <h3 class="modal-title" id="modal-paper-title">Paper Name</h3>
+          <p class="modal-subtitle" id="modal-paper-meta">Subject • Year • Max Marks: 100</p>
+        </div>
+        <button class="modal-close" data-close-modal="modal-view-paper">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-paper-body">
+        <!-- Paper content inserted dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" onclick="window.print()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print Exam Paper
+        </button>
+        <button class="btn btn-primary btn-sm" id="btn-download-paper-sim">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF Paper
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Add Timetable Slot -->
+  <div class="modal-backdrop" id="modal-add-slot">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Timetable Session</h3>
+        <button class="modal-close" data-close-modal="modal-add-slot">&times;</button>
+      </div>
+      <form id="form-create-slot">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="slot-day-select">Day of Week</label>
+            <select id="slot-day-select" class="form-select">
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="slot-time-input">Time Range</label>
+              <input type="text" id="slot-time-input" class="form-input" placeholder="e.g., 10:00 AM - 11:30 AM" required>
+            </div>
+            <div class="form-group">
+              <label for="slot-type-select">Session Type</label>
+              <select id="slot-type-select" class="form-select">
+                <option value="Lecture">Lecture</option>
+                <option value="Lab Practical">Lab Practical</option>
+                <option value="Self Study">Self Study</option>
+                <option value="Revision">Revision</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="slot-subject-input">Subject Name</label>
+            <input type="text" id="slot-subject-input" class="form-input" placeholder="e.g., Computer Networks" required>
+          </div>
+          <div class="form-group">
+            <label for="slot-location-input">Topic / Classroom / Link</label>
+            <input type="text" id="slot-location-input" class="form-input" placeholder="e.g., Room 302 or Chapter 5 Subnetting">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost btn-sm" data-close-modal="modal-add-slot">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Add to Schedule</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>
